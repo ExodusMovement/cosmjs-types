@@ -14,17 +14,9 @@
     "access": "public"
   },
   "files": [
-    "confio/",
     "cosmos/",
-    "cosmos_proto/",
-    "cosmwasm/",
-    "gogoproto/",
     "google/",
-    "ibc/",
-    "tendermint/",
-    "*.md",
-    "!wasmd-0.16/**/*.md",
-    "!wasmd-0.18/**/*.md"
+    "tendermint/"
   ],
   "scripts": {
     "format": "prettier --write --loglevel warn \"./src/**/*.ts\"",
