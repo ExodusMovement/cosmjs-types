@@ -1,6 +1,6 @@
 {
   "name": "@exodus/cosmjs-types",
-  "version": "0.4.0-exodus.1",
+  "version": "0.4.0-exodus.2",
   "description": "JS and TS types relating to Protocol Buffers used by Cosmos-SDK and other related projects",
   "contributors": [
     "Will Clark <willclarktech@users.noreply.github.com>"
