@@ -7,4 +7,5 @@ DIRS="confio cosmos cosmos_proto cosmwasm gogoproto google ibc tendermint"
 for dir in $DIRS; do
   rm -rf "$dir"
   cp -R "./build/$dir" ./
+  rm `find "$dir" -name '*.d.ts' -o -name '*.js.map'`
 done
