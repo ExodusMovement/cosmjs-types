@@ -148,17 +148,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["@types/node", [
-        ["npm:15.6.1", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-15.6.1-1a0b9c8653-8ed16d4f74.zip/node_modules/@types/node/",
+        ["npm:15.14.9", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-15.14.9-739a59edff-49f7f0522a.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:15.6.1"]
+            ["@types/node", "npm:15.14.9"]
           ],
           "linkType": "HARD",
         }],
-        ["npm:15.6.2", {
-          "packageLocation": "./.yarn/cache/@types-node-npm-15.6.2-9d8f9d46a0-8035759447.zip/node_modules/@types/node/",
+        ["npm:17.0.2", {
+          "packageLocation": "./.yarn/cache/@types-node-npm-17.0.2-7997a6cde7-a827d2542e.zip/node_modules/@types/node/",
           "packageDependencies": [
-            ["@types/node", "npm:15.6.2"]
+            ["@types/node", "npm:17.0.2"]
           ],
           "linkType": "HARD",
         }]
@@ -187,11 +187,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["cosmjs-types", "workspace:."],
             ["@types/long", "npm:4.0.1"],
-            ["@types/node", "npm:15.6.2"],
+            ["@types/node", "npm:15.14.9"],
             ["long", "npm:4.0.0"],
-            ["prettier", "npm:2.5.0"],
+            ["prettier", "npm:2.5.1"],
             ["protobufjs", "npm:6.11.2"],
-            ["ts-proto", "npm:1.92.1"],
+            ["ts-proto", "npm:1.95.0"],
             ["typescript", "patch:typescript@npm%3A4.2.4#~builtin<compat/typescript>::version=4.2.4&hash=ddd1e8"]
           ],
           "linkType": "SOFT",
@@ -234,10 +234,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["prettier", [
-        ["npm:2.5.0", {
-          "packageLocation": "./.yarn/cache/prettier-npm-2.5.0-f1121aaab1-aad1b35b73.zip/node_modules/prettier/",
+        ["npm:2.5.1", {
+          "packageLocation": "./.yarn/cache/prettier-npm-2.5.1-58b195b509-21b9408476.zip/node_modules/prettier/",
           "packageDependencies": [
-            ["prettier", "npm:2.5.0"]
+            ["prettier", "npm:2.5.1"]
           ],
           "linkType": "HARD",
         }]
@@ -258,44 +258,44 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@protobufjs/pool", "npm:1.1.0"],
             ["@protobufjs/utf8", "npm:1.1.0"],
             ["@types/long", "npm:4.0.1"],
-            ["@types/node", "npm:15.6.1"],
+            ["@types/node", "npm:17.0.2"],
             ["long", "npm:4.0.0"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["ts-poet", [
-        ["npm:4.5.0", {
-          "packageLocation": "./.yarn/unplugged/ts-poet-npm-4.5.0-5771bc00e9/node_modules/ts-poet/",
+        ["npm:4.6.1", {
+          "packageLocation": "./.yarn/unplugged/ts-poet-npm-4.6.1-407a0903b9/node_modules/ts-poet/",
           "packageDependencies": [
-            ["ts-poet", "npm:4.5.0"],
+            ["ts-poet", "npm:4.6.1"],
             ["@types/prettier", "npm:1.19.1"],
             ["lodash", "npm:4.17.21"],
-            ["prettier", "npm:2.5.0"]
+            ["prettier", "npm:2.5.1"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["ts-proto", [
-        ["npm:1.92.1", {
-          "packageLocation": "./.yarn/cache/ts-proto-npm-1.92.1-42079efd81-3f5f66fdbb.zip/node_modules/ts-proto/",
+        ["npm:1.95.0", {
+          "packageLocation": "./.yarn/cache/ts-proto-npm-1.95.0-3129095d92-ac1f5b357a.zip/node_modules/ts-proto/",
           "packageDependencies": [
-            ["ts-proto", "npm:1.92.1"],
+            ["ts-proto", "npm:1.95.0"],
             ["@types/object-hash", "npm:1.3.4"],
             ["dataloader", "npm:1.4.0"],
             ["object-hash", "npm:1.3.1"],
             ["protobufjs", "npm:6.11.2"],
-            ["ts-poet", "npm:4.5.0"],
-            ["ts-proto-descriptors", "npm:1.2.1"]
+            ["ts-poet", "npm:4.6.1"],
+            ["ts-proto-descriptors", "npm:1.3.1"]
           ],
           "linkType": "HARD",
         }]
       ]],
       ["ts-proto-descriptors", [
-        ["npm:1.2.1", {
-          "packageLocation": "./.yarn/cache/ts-proto-descriptors-npm-1.2.1-bdac3b6021-b77a32b35d.zip/node_modules/ts-proto-descriptors/",
+        ["npm:1.3.1", {
+          "packageLocation": "./.yarn/cache/ts-proto-descriptors-npm-1.3.1-9f5c70fd7f-ef8acf9231.zip/node_modules/ts-proto-descriptors/",
           "packageDependencies": [
-            ["ts-proto-descriptors", "npm:1.2.1"],
+            ["ts-proto-descriptors", "npm:1.3.1"],
             ["long", "npm:4.0.0"],
             ["protobufjs", "npm:6.11.2"]
           ],
