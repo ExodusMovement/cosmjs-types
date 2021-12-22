@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "ics23";
 
@@ -832,8 +832,8 @@ export const ProofSpec = {
       (obj.leafSpec = message.leafSpec ? LeafOp.toJSON(message.leafSpec) : undefined);
     message.innerSpec !== undefined &&
       (obj.innerSpec = message.innerSpec ? InnerSpec.toJSON(message.innerSpec) : undefined);
-    message.maxDepth !== undefined && (obj.maxDepth = message.maxDepth);
-    message.minDepth !== undefined && (obj.minDepth = message.minDepth);
+    message.maxDepth !== undefined && (obj.maxDepth = Math.round(message.maxDepth));
+    message.minDepth !== undefined && (obj.minDepth = Math.round(message.minDepth));
     return obj;
   },
 
@@ -952,13 +952,13 @@ export const InnerSpec = {
   toJSON(message: InnerSpec): unknown {
     const obj: any = {};
     if (message.childOrder) {
-      obj.childOrder = message.childOrder.map((e) => e);
+      obj.childOrder = message.childOrder.map((e) => Math.round(e));
     } else {
       obj.childOrder = [];
     }
-    message.childSize !== undefined && (obj.childSize = message.childSize);
-    message.minPrefixLength !== undefined && (obj.minPrefixLength = message.minPrefixLength);
-    message.maxPrefixLength !== undefined && (obj.maxPrefixLength = message.maxPrefixLength);
+    message.childSize !== undefined && (obj.childSize = Math.round(message.childSize));
+    message.minPrefixLength !== undefined && (obj.minPrefixLength = Math.round(message.minPrefixLength));
+    message.maxPrefixLength !== undefined && (obj.maxPrefixLength = Math.round(message.maxPrefixLength));
     message.emptyChild !== undefined &&
       (obj.emptyChild = base64FromBytes(
         message.emptyChild !== undefined ? message.emptyChild : new Uint8Array(),
@@ -1313,7 +1313,7 @@ export const CompressedExistenceProof = {
       (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
     message.leaf !== undefined && (obj.leaf = message.leaf ? LeafOp.toJSON(message.leaf) : undefined);
     if (message.path) {
-      obj.path = message.path.map((e) => e);
+      obj.path = message.path.map((e) => Math.round(e));
     } else {
       obj.path = [];
     }

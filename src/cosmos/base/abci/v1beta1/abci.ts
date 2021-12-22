@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Any } from "../../../../google/protobuf/any";
 import { Event } from "../../../../tendermint/abci/types";
 
@@ -291,7 +291,7 @@ export const TxResponse = {
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
     message.txhash !== undefined && (obj.txhash = message.txhash);
     message.codespace !== undefined && (obj.codespace = message.codespace);
-    message.code !== undefined && (obj.code = message.code);
+    message.code !== undefined && (obj.code = Math.round(message.code));
     message.data !== undefined && (obj.data = message.data);
     message.rawLog !== undefined && (obj.rawLog = message.rawLog);
     if (message.logs) {
@@ -388,7 +388,7 @@ export const ABCIMessageLog = {
 
   toJSON(message: ABCIMessageLog): unknown {
     const obj: any = {};
-    message.msgIndex !== undefined && (obj.msgIndex = message.msgIndex);
+    message.msgIndex !== undefined && (obj.msgIndex = Math.round(message.msgIndex));
     message.log !== undefined && (obj.log = message.log);
     if (message.events) {
       obj.events = message.events.map((e) => (e ? StringEvent.toJSON(e) : undefined));

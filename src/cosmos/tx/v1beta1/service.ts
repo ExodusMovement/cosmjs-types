@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination";
 import { TxResponse, GasInfo, Result } from "../../../cosmos/base/abci/v1beta1/abci";
 import { Tx } from "../../../cosmos/tx/v1beta1/tx";

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 
 export const protobufPackage = "cosmos.bank.v1beta1";
@@ -440,7 +440,7 @@ export const DenomUnit = {
   toJSON(message: DenomUnit): unknown {
     const obj: any = {};
     message.denom !== undefined && (obj.denom = message.denom);
-    message.exponent !== undefined && (obj.exponent = message.exponent);
+    message.exponent !== undefined && (obj.exponent = Math.round(message.exponent));
     if (message.aliases) {
       obj.aliases = message.aliases.map((e) => e);
     } else {

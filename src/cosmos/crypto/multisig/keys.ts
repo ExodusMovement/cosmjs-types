@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Any } from "../../../google/protobuf/any";
 
 export const protobufPackage = "cosmos.crypto.multisig";
@@ -60,7 +60,7 @@ export const LegacyAminoPubKey = {
 
   toJSON(message: LegacyAminoPubKey): unknown {
     const obj: any = {};
-    message.threshold !== undefined && (obj.threshold = message.threshold);
+    message.threshold !== undefined && (obj.threshold = Math.round(message.threshold));
     if (message.publicKeys) {
       obj.publicKeys = message.publicKeys.map((e) => (e ? Any.toJSON(e) : undefined));
     } else {

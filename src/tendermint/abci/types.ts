@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Timestamp } from "../../google/protobuf/timestamp";
 import { Header } from "../../tendermint/types/types";
 import { ProofOps } from "../../tendermint/crypto/proof";
@@ -1672,8 +1672,8 @@ export const RequestLoadSnapshotChunk = {
   toJSON(message: RequestLoadSnapshotChunk): unknown {
     const obj: any = {};
     message.height !== undefined && (obj.height = (message.height || Long.UZERO).toString());
-    message.format !== undefined && (obj.format = message.format);
-    message.chunk !== undefined && (obj.chunk = message.chunk);
+    message.format !== undefined && (obj.format = Math.round(message.format));
+    message.chunk !== undefined && (obj.chunk = Math.round(message.chunk));
     return obj;
   },
 
@@ -1741,7 +1741,7 @@ export const RequestApplySnapshotChunk = {
 
   toJSON(message: RequestApplySnapshotChunk): unknown {
     const obj: any = {};
-    message.index !== undefined && (obj.index = message.index);
+    message.index !== undefined && (obj.index = Math.round(message.index));
     message.chunk !== undefined &&
       (obj.chunk = base64FromBytes(message.chunk !== undefined ? message.chunk : new Uint8Array()));
     message.sender !== undefined && (obj.sender = message.sender);
@@ -2337,7 +2337,7 @@ export const ResponseSetOption = {
 
   toJSON(message: ResponseSetOption): unknown {
     const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
+    message.code !== undefined && (obj.code = Math.round(message.code));
     message.log !== undefined && (obj.log = message.log);
     message.info !== undefined && (obj.info = message.info);
     return obj;
@@ -2545,7 +2545,7 @@ export const ResponseQuery = {
 
   toJSON(message: ResponseQuery): unknown {
     const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
+    message.code !== undefined && (obj.code = Math.round(message.code));
     message.log !== undefined && (obj.log = message.log);
     message.info !== undefined && (obj.info = message.info);
     message.index !== undefined && (obj.index = (message.index || Long.ZERO).toString());
@@ -2734,7 +2734,7 @@ export const ResponseCheckTx = {
 
   toJSON(message: ResponseCheckTx): unknown {
     const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
+    message.code !== undefined && (obj.code = Math.round(message.code));
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
     message.log !== undefined && (obj.log = message.log);
@@ -2870,7 +2870,7 @@ export const ResponseDeliverTx = {
 
   toJSON(message: ResponseDeliverTx): unknown {
     const obj: any = {};
-    message.code !== undefined && (obj.code = message.code);
+    message.code !== undefined && (obj.code = Math.round(message.code));
     message.data !== undefined &&
       (obj.data = base64FromBytes(message.data !== undefined ? message.data : new Uint8Array()));
     message.log !== undefined && (obj.log = message.log);
@@ -3273,7 +3273,7 @@ export const ResponseApplySnapshotChunk = {
     const obj: any = {};
     message.result !== undefined && (obj.result = responseApplySnapshotChunk_ResultToJSON(message.result));
     if (message.refetchChunks) {
-      obj.refetchChunks = message.refetchChunks.map((e) => e);
+      obj.refetchChunks = message.refetchChunks.map((e) => Math.round(e));
     } else {
       obj.refetchChunks = [];
     }
@@ -3500,7 +3500,7 @@ export const LastCommitInfo = {
 
   toJSON(message: LastCommitInfo): unknown {
     const obj: any = {};
-    message.round !== undefined && (obj.round = message.round);
+    message.round !== undefined && (obj.round = Math.round(message.round));
     if (message.votes) {
       obj.votes = message.votes.map((e) => (e ? VoteInfo.toJSON(e) : undefined));
     } else {
@@ -3713,7 +3713,7 @@ export const TxResult = {
   toJSON(message: TxResult): unknown {
     const obj: any = {};
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.index !== undefined && (obj.index = message.index);
+    message.index !== undefined && (obj.index = Math.round(message.index));
     message.tx !== undefined &&
       (obj.tx = base64FromBytes(message.tx !== undefined ? message.tx : new Uint8Array()));
     message.result !== undefined &&
@@ -4100,8 +4100,8 @@ export const Snapshot = {
   toJSON(message: Snapshot): unknown {
     const obj: any = {};
     message.height !== undefined && (obj.height = (message.height || Long.UZERO).toString());
-    message.format !== undefined && (obj.format = message.format);
-    message.chunks !== undefined && (obj.chunks = message.chunks);
+    message.format !== undefined && (obj.format = Math.round(message.format));
+    message.chunks !== undefined && (obj.chunks = Math.round(message.chunks));
     message.hash !== undefined &&
       (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
     message.metadata !== undefined &&

@@ -204,3 +204,5 @@ protoc \
   "$WASMD_DIR/cosmwasm/wasm/v1/query.proto" \
   "$WASMD_DIR/cosmwasm/wasm/v1/tx.proto" \
   "$WASMD_DIR/cosmwasm/wasm/v1/types.proto"
+
+sed -i -e 's|import _m0 from "protobufjs/minimal";|import _m0 from "@exodus/protobufjs/minimal";|'  `find src/ -type f -name \*.ts`
