@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { DecCoin, Coin } from "../../../cosmos/base/v1beta1/coin";
 
 export const protobufPackage = "cosmos.distribution.v1beta1";
@@ -269,7 +269,7 @@ export const ValidatorHistoricalRewards = {
     } else {
       obj.cumulativeRewardRatio = [];
     }
-    message.referenceCount !== undefined && (obj.referenceCount = message.referenceCount);
+    message.referenceCount !== undefined && (obj.referenceCount = Math.round(message.referenceCount));
     return obj;
   },
 

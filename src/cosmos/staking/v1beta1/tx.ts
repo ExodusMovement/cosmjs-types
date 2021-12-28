@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Description, CommissionRates } from "../../../cosmos/staking/v1beta1/staking";
 import { Any } from "../../../google/protobuf/any";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";

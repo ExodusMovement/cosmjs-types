@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Coin } from "../../../cosmos/base/v1beta1/coin";
 import { PageRequest, PageResponse } from "../../../cosmos/base/query/v1beta1/pagination";
 import { Params, Metadata } from "../../../cosmos/bank/v1beta1/bank";

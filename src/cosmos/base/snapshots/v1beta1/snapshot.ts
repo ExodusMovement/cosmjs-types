@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "cosmos.base.snapshots.v1beta1";
 
@@ -90,8 +90,8 @@ export const Snapshot = {
   toJSON(message: Snapshot): unknown {
     const obj: any = {};
     message.height !== undefined && (obj.height = (message.height || Long.UZERO).toString());
-    message.format !== undefined && (obj.format = message.format);
-    message.chunks !== undefined && (obj.chunks = message.chunks);
+    message.format !== undefined && (obj.format = Math.round(message.format));
+    message.chunks !== undefined && (obj.chunks = Math.round(message.chunks));
     message.hash !== undefined &&
       (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
     message.metadata !== undefined &&

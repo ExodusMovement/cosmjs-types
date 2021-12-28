@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "google.protobuf";
 
@@ -26,7 +26,7 @@ export const protobufPackage = "google.protobuf";
  *     if (duration.seconds < 0 && duration.nanos > 0) {
  *       duration.seconds += 1;
  *       duration.nanos -= 1000000000;
- *     } else if (duration.seconds > 0 && duration.nanos < 0) {
+ *     } else if (durations.seconds > 0 && duration.nanos < 0) {
  *       duration.seconds -= 1;
  *       duration.nanos += 1000000000;
  *     }
@@ -127,7 +127,7 @@ export const Duration = {
   toJSON(message: Duration): unknown {
     const obj: any = {};
     message.seconds !== undefined && (obj.seconds = (message.seconds || Long.ZERO).toString());
-    message.nanos !== undefined && (obj.nanos = message.nanos);
+    message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
     return obj;
   },
 

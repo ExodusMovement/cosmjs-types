@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { IdentifiedConnection, ConnectionPaths } from "../../../../ibc/core/connection/v1/connection";
 
 export const protobufPackage = "ibc.core.connection.v1";

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "google.protobuf";
 
@@ -66,9 +66,7 @@ export interface DescriptorProto {
 }
 
 export interface DescriptorProto_ExtensionRange {
-  /** Inclusive. */
   start: number;
-  /** Exclusive. */
   end: number;
   options?: ExtensionRangeOptions;
 }
@@ -134,30 +132,6 @@ export interface FieldDescriptorProto {
    */
   jsonName: string;
   options?: FieldOptions;
-  /**
-   * If true, this is a proto3 "optional". When a proto3 field is optional, it
-   * tracks presence regardless of field type.
-   *
-   * When proto3_optional is true, this field must be belong to a oneof to
-   * signal to old proto3 clients that presence is tracked for this field. This
-   * oneof is known as a "synthetic" oneof, and this field must be its sole
-   * member (each proto3 optional field gets its own synthetic oneof). Synthetic
-   * oneofs exist in the descriptor only, and do not generate any API. Synthetic
-   * oneofs must be ordered after all "real" oneofs.
-   *
-   * For message fields, proto3_optional doesn't create any semantic change,
-   * since non-repeated message fields always track presence. However it still
-   * indicates the semantic detail of whether the user wrote "optional" or not.
-   * This can be useful for round-tripping the .proto file. For consistency we
-   * give message fields a synthetic oneof also, even though it is not required
-   * to track presence. This is especially important because the parser can't
-   * tell if a field is a message or an enum, so it must always create a
-   * synthetic oneof.
-   *
-   * Proto2 optional fields do not set this flag, because they already indicate
-   * optional with `LABEL_OPTIONAL`.
-   */
-  proto3Optional: boolean;
 }
 
 export enum FieldDescriptorProto_Type {
@@ -427,18 +401,18 @@ export interface FileOptions {
    */
   javaPackage: string;
   /**
-   * Controls the name of the wrapper Java class generated for the .proto file.
-   * That class will always contain the .proto file's getDescriptor() method as
-   * well as any top-level extensions defined in the .proto file.
-   * If java_multiple_files is disabled, then all the other classes from the
-   * .proto file will be nested inside the single wrapper outer class.
+   * If set, all the classes from the .proto file are wrapped in a single
+   * outer class with the given name.  This applies to both Proto1
+   * (equivalent to the old "--one_java_file" option) and Proto2 (where
+   * a .proto always translates to a single class, but you may want to
+   * explicitly choose the class name).
    */
   javaOuterClassname: string;
   /**
-   * If enabled, then the Java code generator will generate a separate .java
+   * If set true, then the Java code generator will generate a separate .java
    * file for each top-level message, enum, and service defined in the .proto
-   * file.  Thus, these types will *not* be nested inside the wrapper class
-   * named by java_outer_classname.  However, the wrapper class will still be
+   * file.  Thus, these types will *not* be nested inside the outer class
+   * named by java_outer_classname.  However, the outer class will still be
    * generated to contain the file's getDescriptor() method as well as any
    * top-level extensions defined in the file.
    */
@@ -522,8 +496,8 @@ export interface FileOptions {
   phpNamespace: string;
   /**
    * Use this option to change the namespace of php generated metadata classes.
-   * Default is empty. When this option is empty, the proto file name will be
-   * used for determining the namespace.
+   * Default is empty. When this option is empty, the proto file name will be used
+   * for determining the namespace.
    */
   phpMetadataNamespace: string;
   /**
@@ -632,7 +606,7 @@ export interface MessageOptions {
    *
    * Implementations may choose not to generate the map_entry=true message, but
    * use a native map in the target language to hold the keys and values.
-   * The reflection APIs in such implementations still need to work as
+   * The reflection APIs in such implementions still need to work as
    * if the field is a repeated message field.
    *
    * NOTE: Do not set the option in .proto files. Always use the maps syntax
@@ -979,7 +953,7 @@ export interface SourceCodeInfo {
    *   beginning of the "extend" block and is shared by all extensions within
    *   the block.
    * - Just because a location's span is a subset of some other location's span
-   *   does not mean that it is a descendant.  For example, a "group" defines
+   *   does not mean that it is a descendent.  For example, a "group" defines
    *   both a type and a field in a single declaration.  Thus, the locations
    *   corresponding to the type and field and their components will overlap.
    * - Code which tries to interpret locations should probably be designed to
@@ -1323,12 +1297,12 @@ export const FileDescriptorProto = {
       obj.dependency = [];
     }
     if (message.publicDependency) {
-      obj.publicDependency = message.publicDependency.map((e) => e);
+      obj.publicDependency = message.publicDependency.map((e) => Math.round(e));
     } else {
       obj.publicDependency = [];
     }
     if (message.weakDependency) {
-      obj.weakDependency = message.weakDependency.map((e) => e);
+      obj.weakDependency = message.weakDependency.map((e) => Math.round(e));
     } else {
       obj.weakDependency = [];
     }
@@ -1624,8 +1598,8 @@ export const DescriptorProto_ExtensionRange = {
 
   toJSON(message: DescriptorProto_ExtensionRange): unknown {
     const obj: any = {};
-    message.start !== undefined && (obj.start = message.start);
-    message.end !== undefined && (obj.end = message.end);
+    message.start !== undefined && (obj.start = Math.round(message.start));
+    message.end !== undefined && (obj.end = Math.round(message.end));
     message.options !== undefined &&
       (obj.options = message.options ? ExtensionRangeOptions.toJSON(message.options) : undefined);
     return obj;
@@ -1688,8 +1662,8 @@ export const DescriptorProto_ReservedRange = {
 
   toJSON(message: DescriptorProto_ReservedRange): unknown {
     const obj: any = {};
-    message.start !== undefined && (obj.start = message.start);
-    message.end !== undefined && (obj.end = message.end);
+    message.start !== undefined && (obj.start = Math.round(message.start));
+    message.end !== undefined && (obj.end = Math.round(message.end));
     return obj;
   },
 
@@ -1770,7 +1744,6 @@ const baseFieldDescriptorProto: object = {
   defaultValue: "",
   oneofIndex: 0,
   jsonName: "",
-  proto3Optional: false,
 };
 
 export const FieldDescriptorProto = {
@@ -1804,9 +1777,6 @@ export const FieldDescriptorProto = {
     }
     if (message.options !== undefined) {
       FieldOptions.encode(message.options, writer.uint32(66).fork()).ldelim();
-    }
-    if (message.proto3Optional === true) {
-      writer.uint32(136).bool(message.proto3Optional);
     }
     return writer;
   },
@@ -1848,9 +1818,6 @@ export const FieldDescriptorProto = {
         case 8:
           message.options = FieldOptions.decode(reader, reader.uint32());
           break;
-        case 17:
-          message.proto3Optional = reader.bool();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1883,27 +1850,22 @@ export const FieldDescriptorProto = {
       object.options !== undefined && object.options !== null
         ? FieldOptions.fromJSON(object.options)
         : undefined;
-    message.proto3Optional =
-      object.proto3Optional !== undefined && object.proto3Optional !== null
-        ? Boolean(object.proto3Optional)
-        : false;
     return message;
   },
 
   toJSON(message: FieldDescriptorProto): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.number !== undefined && (obj.number = message.number);
+    message.number !== undefined && (obj.number = Math.round(message.number));
     message.label !== undefined && (obj.label = fieldDescriptorProto_LabelToJSON(message.label));
     message.type !== undefined && (obj.type = fieldDescriptorProto_TypeToJSON(message.type));
     message.typeName !== undefined && (obj.typeName = message.typeName);
     message.extendee !== undefined && (obj.extendee = message.extendee);
     message.defaultValue !== undefined && (obj.defaultValue = message.defaultValue);
-    message.oneofIndex !== undefined && (obj.oneofIndex = message.oneofIndex);
+    message.oneofIndex !== undefined && (obj.oneofIndex = Math.round(message.oneofIndex));
     message.jsonName !== undefined && (obj.jsonName = message.jsonName);
     message.options !== undefined &&
       (obj.options = message.options ? FieldOptions.toJSON(message.options) : undefined);
-    message.proto3Optional !== undefined && (obj.proto3Optional = message.proto3Optional);
     return obj;
   },
 
@@ -1922,7 +1884,6 @@ export const FieldDescriptorProto = {
       object.options !== undefined && object.options !== null
         ? FieldOptions.fromPartial(object.options)
         : undefined;
-    message.proto3Optional = object.proto3Optional ?? false;
     return message;
   },
 };
@@ -2146,8 +2107,8 @@ export const EnumDescriptorProto_EnumReservedRange = {
 
   toJSON(message: EnumDescriptorProto_EnumReservedRange): unknown {
     const obj: any = {};
-    message.start !== undefined && (obj.start = message.start);
-    message.end !== undefined && (obj.end = message.end);
+    message.start !== undefined && (obj.start = Math.round(message.start));
+    message.end !== undefined && (obj.end = Math.round(message.end));
     return obj;
   },
 
@@ -2215,7 +2176,7 @@ export const EnumValueDescriptorProto = {
   toJSON(message: EnumValueDescriptorProto): unknown {
     const obj: any = {};
     message.name !== undefined && (obj.name = message.name);
-    message.number !== undefined && (obj.number = message.number);
+    message.number !== undefined && (obj.number = Math.round(message.number));
     message.options !== undefined &&
       (obj.options = message.options ? EnumValueOptions.toJSON(message.options) : undefined);
     return obj;
@@ -3659,12 +3620,12 @@ export const SourceCodeInfo_Location = {
   toJSON(message: SourceCodeInfo_Location): unknown {
     const obj: any = {};
     if (message.path) {
-      obj.path = message.path.map((e) => e);
+      obj.path = message.path.map((e) => Math.round(e));
     } else {
       obj.path = [];
     }
     if (message.span) {
-      obj.span = message.span.map((e) => e);
+      obj.span = message.span.map((e) => Math.round(e));
     } else {
       obj.span = [];
     }
@@ -3812,13 +3773,13 @@ export const GeneratedCodeInfo_Annotation = {
   toJSON(message: GeneratedCodeInfo_Annotation): unknown {
     const obj: any = {};
     if (message.path) {
-      obj.path = message.path.map((e) => e);
+      obj.path = message.path.map((e) => Math.round(e));
     } else {
       obj.path = [];
     }
     message.sourceFile !== undefined && (obj.sourceFile = message.sourceFile);
-    message.begin !== undefined && (obj.begin = message.begin);
-    message.end !== undefined && (obj.end = message.end);
+    message.begin !== undefined && (obj.begin = Math.round(message.begin));
+    message.end !== undefined && (obj.end = Math.round(message.end));
     return obj;
   },
 

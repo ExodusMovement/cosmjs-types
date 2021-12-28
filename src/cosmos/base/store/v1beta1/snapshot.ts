@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "cosmos.base.store.v1beta1";
 
@@ -205,7 +205,7 @@ export const SnapshotIAVLItem = {
     message.value !== undefined &&
       (obj.value = base64FromBytes(message.value !== undefined ? message.value : new Uint8Array()));
     message.version !== undefined && (obj.version = (message.version || Long.ZERO).toString());
-    message.height !== undefined && (obj.height = message.height);
+    message.height !== undefined && (obj.height = Math.round(message.height));
     return obj;
   },
 

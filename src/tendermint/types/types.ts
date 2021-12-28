@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Proof } from "../../tendermint/crypto/proof";
 import { Consensus } from "../../tendermint/version/types";
 import { Timestamp } from "../../google/protobuf/timestamp";
@@ -268,7 +268,7 @@ export const PartSetHeader = {
 
   toJSON(message: PartSetHeader): unknown {
     const obj: any = {};
-    message.total !== undefined && (obj.total = message.total);
+    message.total !== undefined && (obj.total = Math.round(message.total));
     message.hash !== undefined &&
       (obj.hash = base64FromBytes(message.hash !== undefined ? message.hash : new Uint8Array()));
     return obj;
@@ -335,7 +335,7 @@ export const Part = {
 
   toJSON(message: Part): unknown {
     const obj: any = {};
-    message.index !== undefined && (obj.index = message.index);
+    message.index !== undefined && (obj.index = Math.round(message.index));
     message.bytes !== undefined &&
       (obj.bytes = base64FromBytes(message.bytes !== undefined ? message.bytes : new Uint8Array()));
     message.proof !== undefined && (obj.proof = message.proof ? Proof.toJSON(message.proof) : undefined);
@@ -814,7 +814,7 @@ export const Vote = {
     const obj: any = {};
     message.type !== undefined && (obj.type = signedMsgTypeToJSON(message.type));
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.round !== undefined && (obj.round = message.round);
+    message.round !== undefined && (obj.round = Math.round(message.round));
     message.blockId !== undefined &&
       (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
     message.timestamp !== undefined && (obj.timestamp = fromTimestamp(message.timestamp).toISOString());
@@ -822,7 +822,7 @@ export const Vote = {
       (obj.validatorAddress = base64FromBytes(
         message.validatorAddress !== undefined ? message.validatorAddress : new Uint8Array(),
       ));
-    message.validatorIndex !== undefined && (obj.validatorIndex = message.validatorIndex);
+    message.validatorIndex !== undefined && (obj.validatorIndex = Math.round(message.validatorIndex));
     message.signature !== undefined &&
       (obj.signature = base64FromBytes(
         message.signature !== undefined ? message.signature : new Uint8Array(),
@@ -912,7 +912,7 @@ export const Commit = {
   toJSON(message: Commit): unknown {
     const obj: any = {};
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.round !== undefined && (obj.round = message.round);
+    message.round !== undefined && (obj.round = Math.round(message.round));
     message.blockId !== undefined &&
       (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
     if (message.signatures) {
@@ -1124,8 +1124,8 @@ export const Proposal = {
     const obj: any = {};
     message.type !== undefined && (obj.type = signedMsgTypeToJSON(message.type));
     message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
-    message.round !== undefined && (obj.round = message.round);
-    message.polRound !== undefined && (obj.polRound = message.polRound);
+    message.round !== undefined && (obj.round = Math.round(message.round));
+    message.polRound !== undefined && (obj.polRound = Math.round(message.polRound));
     message.blockId !== undefined &&
       (obj.blockId = message.blockId ? BlockID.toJSON(message.blockId) : undefined);
     message.timestamp !== undefined && (obj.timestamp = fromTimestamp(message.timestamp).toISOString());

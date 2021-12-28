@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "tendermint.p2p";
 
@@ -84,7 +84,7 @@ export const NetAddress = {
     const obj: any = {};
     message.id !== undefined && (obj.id = message.id);
     message.ip !== undefined && (obj.ip = message.ip);
-    message.port !== undefined && (obj.port = message.port);
+    message.port !== undefined && (obj.port = Math.round(message.port));
     return obj;
   },
 

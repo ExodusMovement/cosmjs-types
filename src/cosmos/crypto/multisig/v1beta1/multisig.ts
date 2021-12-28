@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 
 export const protobufPackage = "cosmos.crypto.multisig.v1beta1";
 
@@ -124,7 +124,7 @@ export const CompactBitArray = {
 
   toJSON(message: CompactBitArray): unknown {
     const obj: any = {};
-    message.extraBitsStored !== undefined && (obj.extraBitsStored = message.extraBitsStored);
+    message.extraBitsStored !== undefined && (obj.extraBitsStored = Math.round(message.extraBitsStored));
     message.elems !== undefined &&
       (obj.elems = base64FromBytes(message.elems !== undefined ? message.elems : new Uint8Array()));
     return obj;

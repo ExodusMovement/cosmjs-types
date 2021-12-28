@@ -1,6 +1,6 @@
 /* eslint-disable */
 import Long from "long";
-import _m0 from "protobufjs/minimal";
+import _m0 from "@exodus/protobufjs/minimal";
 import { Header } from "../../../tendermint/types/types";
 import { Timestamp } from "../../../google/protobuf/timestamp";
 import { Any } from "../../../google/protobuf/any";
@@ -1558,9 +1558,10 @@ export const Params = {
     const obj: any = {};
     message.unbondingTime !== undefined &&
       (obj.unbondingTime = message.unbondingTime ? Duration.toJSON(message.unbondingTime) : undefined);
-    message.maxValidators !== undefined && (obj.maxValidators = message.maxValidators);
-    message.maxEntries !== undefined && (obj.maxEntries = message.maxEntries);
-    message.historicalEntries !== undefined && (obj.historicalEntries = message.historicalEntries);
+    message.maxValidators !== undefined && (obj.maxValidators = Math.round(message.maxValidators));
+    message.maxEntries !== undefined && (obj.maxEntries = Math.round(message.maxEntries));
+    message.historicalEntries !== undefined &&
+      (obj.historicalEntries = Math.round(message.historicalEntries));
     message.bondDenom !== undefined && (obj.bondDenom = message.bondDenom);
     return obj;
   },
